@@ -14,3 +14,10 @@ class VendorForm(forms.ModelForm):
             'phone_number': _('電話'),
             'address': _('地址'),
         }
+
+
+class RawVendorForm(forms.Form):
+    vendor_name = forms.CharField(label='攤販名稱')
+    store_name = forms.CharField(label='店名')
+    phone_number = forms.CharField(label='電話')
+    address = forms.CharField(label='地址')

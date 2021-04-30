@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from .models import Vendor
-from .forms import VendorForm
+from .forms import RawVendorForm
 
 
 def index(request):
@@ -11,10 +11,10 @@ def index(request):
 
 
 def create_view(request):
-    form = VendorForm(request.POST or None)
+    form = RawVendorForm(request.POST or None)
     if form.is_valid():
-        form.save()
-        form = VendorForm()
+        Vendor.objects.create(**form.cleaned_data)
+        form = RawVendorForm()
 
     context = {
         'form': form
