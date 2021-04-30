@@ -10,7 +10,6 @@ def index(request):
     return render(request, 'vendor/detail.html', context)
 
 
-# 針對 create.html
 def create_view(request):
     form = VendorForm(request.POST or None)
     if form.is_valid():
