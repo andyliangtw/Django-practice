@@ -7,7 +7,7 @@ from .forms import RawVendorForm
 def index(request):
     vendor_list = Vendor.objects.all()  # 把所有 Vendor 的資料取出來
     context = {'vendor_list': vendor_list}  # 建立 Dict 對應到 Vendor 的資料，
-    return render(request, 'vendor/detail.html', context)
+    return render(request, 'vendor/index.html', context)
 
 
 def create_view(request):
@@ -20,3 +20,11 @@ def create_view(request):
         'form': form
     }
     return render(request, "vendor/create.html", context)
+
+
+def singleVendor(request, id):
+    vendor = Vendor.objects.get(id=id)
+    context = {
+        'vendor': vendor
+    }
+    return render(request, 'vendor/detail.html', context)
