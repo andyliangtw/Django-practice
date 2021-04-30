@@ -1,8 +1,8 @@
 from django.shortcuts import render
+from .models import Vendor
 
-# Create your views here.
 
-
-def showtemplate(request):
-    # 今天先不探討什麼是 render，先記得它會去撈 test.html
-    return render(request, 'test.html')
+def vendor_index(request):
+    vendor_list = Vendor.objects.all()  # 把所有 Vendor 的資料取出來
+    context = {'vendor_list': vendor_list}  # 建立 Dict 對應到 Vendor 的資料，
+    return render(request, 'test.html', context)
