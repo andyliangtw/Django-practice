@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from .models import Vendor
 from .forms import RawVendorForm
@@ -23,7 +23,11 @@ def create_view(request):
 
 
 def singleVendor(request, id):
-    vendor = Vendor.objects.get(id=id)
+    vendor = get_object_or_404(Vendor, id=id)  # appeared when DEBUG=False
+    # try:
+    #     vendor = Vendor.objects.get(id=id)
+    # except Vendor.DoesNotExist:
+    #     raise Http404
     context = {
         'vendor': vendor
     }
