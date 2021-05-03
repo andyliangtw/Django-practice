@@ -1,13 +1,19 @@
 {% extends "base.html" %}
 
-{% block title %}HomePage{% endblock %}
+{% load socialaccount %}
+
+{% block title %}Allauth Test{% endblock %}
 
 {% block content %}
+<h2>Allauth Test</h2>
 {% if user.is_authenticated %}
-  <h1>Hello, {{ user.username }}!</h1>
-  <a href="{% url 'logout' %}">Logout</a><br>
+  <p>Hello, {{ user.username }}!</p>
+  <a href="{% url 'account_logout' %}">Logout</a><br>
 {% else %}
-  <h1>You are not logged in</h1>
-  <a href="{% url 'login' %}">Login Page</a>
+  <p>You are not logged in</p>
+  <ul>
+    <li><a href="{% url 'account_login' %}">Login Page</a></li>
+    <li><a href="{% provider_login_url 'github' %}">Github登入</a></li>
+  </ul>
 {% endif %}
 {% endblock %}

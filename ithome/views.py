@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.base import TemplateView
+
+class HomePage(TemplateView):
+	template_name = 'home.html'
 
 
 def register(request):
