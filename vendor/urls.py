@@ -1,11 +1,12 @@
 from django.urls import path
 
-from . import views
+from .views import VendorListView, VendorDetailView, VendorCreateView, VendorUpdateView
 from .apps import VendorConfig
 
 app_name = VendorConfig.name
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('create/', views.create_view, name='create'),
-    path('<int:id>/', views.singleVendor, name='id'),
+    path('', VendorListView.as_view(), name='index'),
+    path('create/', VendorCreateView.as_view(), name='create'),
+    path('<int:pk>/', VendorDetailView.as_view(), name='pk'),
+    path('<int:pk>/update/', VendorUpdateView.as_view(), name='update'),
 ]

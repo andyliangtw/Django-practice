@@ -12,7 +12,7 @@ class Vendor(models.Model):
         return self.vendor_name
 
     def get_absolute_url(self):
-        return reverse('vendor:id', kwargs={'id': self.id})
+        return reverse('vendor:pk', kwargs={'pk': self.pk})
 
 
 class Food(models.Model):
